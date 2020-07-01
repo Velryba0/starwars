@@ -6,6 +6,12 @@ import moment from 'moment'
 
 import imgData from '../../utils/imagesStarships.json'
 
+//Componentes
+
+import CardModal from '../card/index'
+
+//Estilos
+
 import './index.style.scss'
 
 import PropTypes from 'prop-types';
@@ -21,8 +27,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Button from '@material-ui/core/Button';
 
 const useRowStyles = makeStyles({
   root: {
@@ -35,17 +40,34 @@ const useRowStyles = makeStyles({
 
 
 function Row(props) {
+
+  //States
+
   const { data, index } = props;
   const [open, setOpen] = useState(false);
-  const classes = useRowStyles();
-    // console.log("data"   , data)
 
-    let date = moment(data.created);
+  const [ openDialog, setOpenDialog ] = useState(false);
+
+  //Methos
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true)
+  }
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false)
+  }
+
+  const classes = useRowStyles();
+  
+  //Variales
+
+    const date = moment(data.created);
     let dateFormat = date.utc().format('DD-MM-YYYY')
 
-    let regex = /\/starships\/(0*[1-9][0-9]*)/
+    const regex = /\/starships\/(0*[1-9][0-9]*)/
 
-    let resRegex = data.url.match(regex)
+    const resRegex = data.url.match(regex)
     console.log(typeof data.created)
     console.log(dateFormat)
     console.log("regex", resRegex[1])
@@ -80,6 +102,16 @@ function Row(props) {
                     <TableCell>Capacidad</TableCell>
                     <TableCell align="right">Consumibles</TableCell>
                     <TableCell align="right">Fecha de creación</TableCell>
+                    <TableCell>
+                      <Button className="table-button-details" variant="outlined"  onClick={handleOpenDialog}>
+                        Detalles
+                      </Button>
+                      <CardModal 
+                        data={data} 
+                        img={imgData.imgStarships[index][resRegex[1]]} 
+                        open={openDialog}
+                        onClose={handleCloseDialog}/>
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -93,6 +125,7 @@ function Row(props) {
                       <TableCell align="right">
                         {dateFormat}
                       </TableCell>
+                      <TableCell></TableCell>
                     </TableRow>
                 </TableBody>
               </Table>
@@ -118,8 +151,8 @@ export default function CollapsibleTable() {
           <TableRow>
             <TableCell>Nombre Starship</TableCell>
             <TableCell align="right">Modelo</TableCell>
-            <TableCell align="right">Vel Max en Atmósfera&nbsp;()</TableCell>
-            <TableCell align="right">Costo&nbsp;(g)</TableCell>
+            <TableCell align="right">Vel Max en Atmósfera&nbsp;(km/h)</TableCell>
+            <TableCell align="right">Costo&nbsp;(c)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
