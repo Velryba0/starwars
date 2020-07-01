@@ -1,0 +1,17 @@
+.text-content {
+    background-color: black !important;
+    overflow: scroll;
+    height: 150px;
+
+    .text-card {
+        color: white !important;
+        font-family: 'Press Start 2P', cursive;
+    }
+
+    p {
+        font-family: 'Codystar', cursive !important;
+        font-size: 1.2em;
+        margin-top: 6px;
+    }
+}
+
