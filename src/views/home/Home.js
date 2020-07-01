@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useSelector ,useDispatch } from 'react-redux'
 import { requestStarshipData } from '../../store/ducks/starship'
 
+// Components
+
+import TableStarships from '../../components/tableStarships/index'
+
 const Home = () => {
 
-    const starshipDataStore = useSelector(state => state);
+    // const starshipDataStore = useSelector(state => state);
 
     const dispatch = useDispatch();
 
@@ -13,13 +17,14 @@ const Home = () => {
         dispatch(requestStarshipData())
     }, [])
 
-    console.log(starshipDataStore)
+    // console.log(starshipDataStore.starships.results)
     
 
 
     return (
         <>
         <h1>Home</h1>
+        <TableStarships />
         </>
     )
 }
