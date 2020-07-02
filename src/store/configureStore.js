@@ -7,7 +7,7 @@ import rootSaga from './rootSaga'
 export const configureStore = (initialState) => {
     const sagaMiddleware = createSagaMiddleware()
     const middlewares = [sagaMiddleware]
-    const store = createStore(reducers, composeWithDevTools(applyMiddleware(...middlewares)))
+    const store = createStore(reducers, applyMiddleware(...middlewares))
     sagaMiddleware.run(rootSaga)
     return store
   }

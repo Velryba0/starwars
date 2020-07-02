@@ -1,6 +1,6 @@
 export const starshipData = async () => {
     try {
-        const response = await fetch('http://swapi.dev/api/starships/');
+        const response = await fetch('https://swapi.dev/api/starships/');
         const starships = await response.json();
         
         return starships
@@ -12,7 +12,7 @@ export const starshipData = async () => {
 export const starshipDataPages = async ({ pag }) => {
     console.log(pag)
     try {
-        const response = await fetch(`http://swapi.dev/api/starships/?page=${pag}`);
+        const response = await fetch(`https://swapi.dev/api/starships/?page=${pag}`);
         const starships = await response.json();
         
         return starships
@@ -23,7 +23,7 @@ export const starshipDataPages = async ({ pag }) => {
 
 export const allStarships1 = async () => {
     try {
-        const response = await fetch('http://swapi.dev/api/starships/?page=1');
+        const response = await fetch('https://swapi.dev/api/starships/?page=1');
         const starships = await response.json();
         
         return starships.results
@@ -34,7 +34,7 @@ export const allStarships1 = async () => {
 
 export const allStarships2 = async () => {
     try {
-        const response = await fetch('http://swapi.dev/api/starships/?page=2');
+        const response = await fetch('https://swapi.dev/api/starships/?page=2');
         const starships = await response.json();
         
         return starships.results
@@ -44,7 +44,7 @@ export const allStarships2 = async () => {
 }
 export const allStarships3 = async () => {
     try {
-        const response = await fetch('http://swapi.dev/api/starships/?page=3');
+        const response = await fetch('https://swapi.dev/api/starships/?page=3');
         const starships = await response.json();
         
         return starships.results
@@ -54,7 +54,7 @@ export const allStarships3 = async () => {
 }
 export const allStarships4 = async () => {
     try {
-        const response = await fetch('http://swapi.dev/api/starships/?page=4');
+        const response = await fetch('https://swapi.dev/api/starships/?page=4');
         const starships = await response.json();
         
         return starships.results
