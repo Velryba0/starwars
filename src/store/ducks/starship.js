@@ -26,7 +26,6 @@ export const RECEIVE_STARSHIPS_DATA = 'RECEIVE_STARSHIPS_DATA';
 export const requestStarshipData = () => ({ type: REQUEST_STARSHIPS_DATA})
 export const receiveStarshipData = (data) => ({ type: RECEIVE_STARSHIPS_DATA, data});
 
-
 /**********REDUCER***********/
 
 export default (state = {}, { type, data }) => {
