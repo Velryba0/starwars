@@ -49,8 +49,7 @@ const useStyles = makeStyles({
 
 export default function CardModal({ onClose, open, data, img }) {
     const classes = useStyles();
-    console.log(data)
-  const handleClose = () => {
+    const handleClose = () => {
     onClose();
   };
 
@@ -75,49 +74,49 @@ export default function CardModal({ onClose, open, data, img }) {
                     />
                     <CardContent className='text-content'>
                     <Typography gutterBottom variant="h5" component="h4" className="text-card">
-                        {data.name}
+                        {data ? data.name : ""}
                     </Typography>        
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Model: ${data.model}`}
+                        {`Model: ${data ? data.model : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Manufactur: ${data.manufacturer}`}
+                        {`Manufactur: ${data ? data.manufacturer: ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Crew: ${data.crew}`}
+                        {`Crew: ${data ? data.crew : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Length: ${data.length}`}
+                        {`Length: ${data ? data.length : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Passengers ${data.passengers}`}
+                        {`Passengers ${data ? data.passengers : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`MGLT: ${data['MGLT']}`}
+                        {`MGLT: ${data ? data['MGLT'] : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Starship Class: ${data.starship_class}`}
+                        {`Starship Class: ${data ? data.starship_class : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Pilots ${data.pilots.length}`}
+                        {`Pilots ${data ? data.pilots.length : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Created at: ${data.created}`}
+                        {`Created at: ${data ? data.created : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Films: ${data.films.length}`}
+                        {`Films: ${data ? data.films.length : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Consumables: ${data.consumables}`}
+                        {`Consumables: ${data ? data.consumables : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Cargo Capacity ${data.cargo_capacity}`}
+                        {`Cargo Capacity ${data ? data.cargo_capacity : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Max Atmosphering Speed: ${data.max_atmosphering_speed}`}
+                        {`Max Atmosphering Speed: ${data ? data.max_atmosphering_speed : ""}`}
                     </Typography>
                     <Typography variant="body2" component="p" className="text-card">
-                        {`Costo: ${data.cost_in_credits}`}
+                        {`Costo: ${data ? data.cost_in_credits : ""}`}
                     </Typography>
                     </CardContent>
                 </CardActionArea>

@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { useSelector ,useDispatch } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-
-import { requestSearchStarships } from '../../store/ducks/searchStarships';
 
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
-    },
+    }
   },
   search: {
     position: 'relative',
@@ -74,23 +70,12 @@ export default function SearchAppBar() {
 
     const [searchActive, setSearchActive] = useState(false)
 
-    const dataStarWars = useSelector(state => state)
-
-    const dispatch = useDispatch();
-
     
     const searchChar = (e) => {
         setSearchActive(true)
         console.log("SEARCH!!")
-        
-        if(value === '') {
-            document.location.reload();
-        } else {
-            dispatch(requestSearchStarships({value, searchActive}))
-        }
     }
     
-    console.log(dataStarWars)
     const searchInput = (e) => {
       setValue(e.target.value)
     }
@@ -99,7 +84,7 @@ export default function SearchAppBar() {
 
   return (
     <div className={classes.root} >
-      <AppBar position="static" theme={classes.root} style={{background: 'linear-gradient(45deg, #28788a 30%, #FF8E53 90%)'}}>
+      <AppBar position="static" theme={classes.root} style={{background: 'linear-gradient(45deg, #ffd905 30%, #000000 90%)'}}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -108,7 +93,7 @@ export default function SearchAppBar() {
             aria-label="open drawer"
           >
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant="h6" noWrap style={{color: "black", }}>
             Starships Star Wars
           </Typography>
           <div className={classes.search}>

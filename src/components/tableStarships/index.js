@@ -66,14 +66,9 @@ function Row(props) {
 
     let resRegex = data.url.match(regex)
 
-    console.log(resRegex[1])
-    console.log(index)
-
     let imgTable = Object.values(imgData)[0].find((elem, idx) => {
       return elem[resRegex[1]]
     })
-
-    console.log(imgTable[resRegex[1]])
 
   return (
     <React.Fragment>
@@ -140,10 +135,6 @@ function Row(props) {
 }
 
 export default function CollapsibleTable({ dataNaves }) {
-    
-    console.log("New Data", dataNaves)
-  
-
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -156,9 +147,9 @@ export default function CollapsibleTable({ dataNaves }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {dataNaves.map((starship, idx) => (
+          {dataNaves ? dataNaves.map((starship, idx) => (
             <Row key={starship.name} data={starship} index={idx}/>
-          ))}
+          )) : []}
         </TableBody>
       </Table>
     </TableContainer>

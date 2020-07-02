@@ -7,7 +7,6 @@ export const receiveSearchStarships = (data) => ({ type: RECEIVE_SEARCH_STARSHIP
 /**********REDUCER***********/
 
 export default (state = {}, { type, data }) => {
-    console.log(data)
     switch (type) {
         case RECEIVE_SEARCH_STARSHIPS:
             return data;

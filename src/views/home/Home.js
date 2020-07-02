@@ -42,8 +42,6 @@ const Home = () => {
         }, 500);
     }, [count]);
 
-    // console.log(allStarshipsStarwars.allStarships.length ? allStarshipsStarwars.allStarships.flat() : "LOADING...")
-    console.log(allStarshipsStarwars)
 
     const TableData = () => {
         if(dataStarships.starships.results && !loading) {
@@ -67,10 +65,6 @@ const Home = () => {
             return <TableStarships dataNaves={allStarshipsStarwars.allStarships.flat()}/>  
         }
     }
-
-    console.log("COUNT", countPag)
-    
-
 
     return (
         <>
