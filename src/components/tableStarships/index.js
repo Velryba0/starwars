@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-import { useSelector ,useDispatch } from 'react-redux'
 
 import moment from 'moment'
 
@@ -14,11 +13,9 @@ import CardModal from '../card/index'
 
 import './index.style.scss'
 
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -48,7 +45,7 @@ function Row(props) {
 
   const [ openDialog, setOpenDialog ] = useState(false);
 
-  //Methos
+  //Methods
 
   const handleOpenDialog = () => {
     setOpenDialog(true)
@@ -65,14 +62,18 @@ function Row(props) {
     const date = moment(data.created);
     let dateFormat = date.utc().format('DD-MM-YYYY')
 
-    const regex = /\/starships\/(0*[1-9][0-9]*)/
+    let regex = /\/starships\/(0*[1-9][0-9]*)/
 
-    const resRegex = data.url.match(regex)
-    console.log(typeof data.created)
-    console.log(dateFormat)
-    console.log("regex", resRegex[1])
-    console.log("imgData", imgData.imgStarships[index][resRegex[1]][0])
-    // console.log(res.resRegex[1] == imgData.imgStarships[0].id ? ) 
+    let resRegex = data.url.match(regex)
+
+    console.log(resRegex[1])
+    console.log(index)
+
+    let imgTable = Object.values(imgData)[0].find((elem, idx) => {
+      return elem[resRegex[1]]
+    })
+
+    console.log(imgTable[resRegex[1]])
 
   return (
     <React.Fragment>
@@ -95,7 +96,8 @@ function Row(props) {
                   <TableRow >
                   <TableCell>
                     <div className="table-img">
-                      <img src={imgData.imgStarships[index][resRegex[1]][0]} /> 
+                      {/* <img src={imgData.imgStarships[index][resRegex[1]] ? imgData.imgStarships[index][resRegex[1]][0] : ""} />  */}
+                      <img src={imgTable[resRegex[1]][0]}/>
                     </div>
                   </TableCell>
                     <TableCell >Manufactura</TableCell> 
@@ -108,7 +110,7 @@ function Row(props) {
                       </Button>
                       <CardModal 
                         data={data} 
-                        img={imgData.imgStarships[index][resRegex[1]]} 
+                        img={imgTable[resRegex[1]]} 
                         open={openDialog}
                         onClose={handleCloseDialog}/>
                     </TableCell>
@@ -137,12 +139,10 @@ function Row(props) {
   );
 }
 
-export default function CollapsibleTable() {
-
+export default function CollapsibleTable({ dataNaves }) {
     
-    const starshipDataStore = useSelector(state => state);
-    
-    console.log(starshipDataStore.starships.results)
+    console.log("New Data", dataNaves)
+  
 
   return (
     <TableContainer component={Paper}>
@@ -156,9 +156,9 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {starshipDataStore.starships.results ? starshipDataStore.starships.results.map((starship, idx) => (
+          {dataNaves.map((starship, idx) => (
             <Row key={starship.name} data={starship} index={idx}/>
-          )) : "Loading..."}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

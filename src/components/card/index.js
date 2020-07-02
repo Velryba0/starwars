@@ -62,7 +62,7 @@ export default function CardModal({ onClose, open, data, img }) {
         aria-labelledby="simple-dialog-title" 
         open={open} 
         style={{
-            backgroundImage: `url(${img[0]})`,
+            backgroundImage: `url(${img ? img[0] : ""})`,
             backgroundAttachment: "fixed",
             backgroundSize: "cover"
         }}>
@@ -70,7 +70,7 @@ export default function CardModal({ onClose, open, data, img }) {
                 <CardActionArea >
                     <CardMedia
                     className={classes.media}
-                    image={img[1]}
+                    image={img ? img[1] : ""}
                     title="Contemplative Reptile"
                     />
                     <CardContent className='text-content'>
