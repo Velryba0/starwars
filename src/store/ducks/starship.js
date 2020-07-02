@@ -12,6 +12,7 @@ function* getStarshipsData() {
     }
 }
 
+
 export function* starwarsData() {
     yield all([
         takeEvery(REQUEST_STARSHIPS_DATA, getStarshipsData)
@@ -23,7 +24,7 @@ export function* starwarsData() {
 export const REQUEST_STARSHIPS_DATA = 'REQUEST_STARSHIPS_DATA';
 export const RECEIVE_STARSHIPS_DATA = 'RECEIVE_STARSHIPS_DATA';
 
-export const requestStarshipData = () => ({ type: REQUEST_STARSHIPS_DATA})
+export const requestStarshipData = () => ({ type: REQUEST_STARSHIPS_DATA});
 export const receiveStarshipData = (data) => ({ type: RECEIVE_STARSHIPS_DATA, data});
 
 /**********REDUCER***********/

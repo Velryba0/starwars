@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector ,useDispatch } from 'react-redux'
 import { requestStarshipData } from '../../store/ducks/starship'
 import { requestStarshipDataPages } from '../../store/ducks/starshipsPages'
+import { requestAllStarships } from '../../store/ducks/allStarships'
 
 // Components
 
@@ -19,6 +20,7 @@ const Home = () => {
 
     const dataStarships = useSelector(state => state );
     const dataStarshipsPages = useSelector(state => state);
+    const allStarshipsStarwars = useSelector(state => state);
 
     
 
@@ -27,6 +29,7 @@ const Home = () => {
     let countPag = Math.ceil(dataStarships.starships.count / 10)
 
     useEffect(() => {
+        dispatch(requestAllStarships())
         setLoading(true)
         if(count == 1) {
             dispatch(requestStarshipData())
@@ -39,8 +42,8 @@ const Home = () => {
         }, 500);
     }, [count]);
 
-    console.log(dataStarshipsPages)
-    // console.log(dataPages)
+    // console.log(allStarshipsStarwars.allStarships.length ? allStarshipsStarwars.allStarships.flat() : "LOADING...")
+    console.log(allStarshipsStarwars)
 
     const TableData = () => {
         if(dataStarships.starships.results && !loading) {
@@ -59,13 +62,18 @@ const Home = () => {
       
     }
 
+    const TableAllData = () => {
+        if(allStarshipsStarwars.allStarships.length && !loading) {
+            return <TableStarships dataNaves={allStarshipsStarwars.allStarships.flat()}/>  
+        }
+    }
+
     console.log("COUNT", countPag)
     
 
 
     return (
         <>
-        <h1>Home</h1>
         <div className="table-starwars-content">
             { count === 1 ? <TableData/> : <TableDataPages/>} 
             <PaginationTable
