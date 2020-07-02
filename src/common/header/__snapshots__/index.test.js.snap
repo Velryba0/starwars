@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Header should render the Title Component correctly 1`] = `ShallowWrapper {}`;
+
+exports[`Title should render the Title Component correctly 1`] = `ShallowWrapper {}`;
+
+exports[`src/common/header load component 1`] = `ShallowWrapper {}`;
+
+exports[`src/common/header should render the Title Component correctly 1`] = `ShallowWrapper {}`;
+
+exports[`src/common/header/pagination Pass number 1`] = `ShallowWrapper {}`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/common/header/pagination Paginacion 1`] = `ShallowWrapper {}`;
+
+exports[`src/common/header/pagination Pass number 1`] = `ShallowWrapper {}`;
+
+exports[`src/common/header/pagination should work 1`] = `ShallowWrapper {}`;
+
+exports[`src/common/pagination Pass number 1`] = `ShallowWrapper {}`;
